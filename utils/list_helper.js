@@ -60,26 +60,15 @@ const dummy = (blogs) => {
 
 
 const totalLikes = (blogs) => {
-  const likes = blogs.reduce((total, blog) => {
-    return total + blog.likes
-  }, 0)
+  const likes = _(blogs).sumBy('likes')
 
   return blogs ? likes : 0
 }
 
 const favoriteBlog = (blogs) => {
-  const favoriteBlog = blogs.reduce(
-    (favBlog, blog) => {
-      if (blog.likes > favBlog.likes) {
-        return blog
-      }
+  const favoriteBlog = _(blogs).maxBy('likes')
 
-      return favBlog
-    },
-    { likes: 0 }
-  )
-
-  if (!favoriteBlog.author) {
+  if (!favoriteBlog) {
     return []
   } else {
     return {
