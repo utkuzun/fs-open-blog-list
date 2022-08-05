@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 const logger = require('./utils/logger')
 const config = require('./utils/config')
 
