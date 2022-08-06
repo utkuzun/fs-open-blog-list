@@ -5,8 +5,11 @@ POST http://localhost:3001/api/blogs/
 Content-Type: application/json
 
 {
-    "title" : "selam", 
+    "title" : "akmet", 
     "author" : "utku",
-    "url" : "mal.com", 
+    "url" : "tewasdfga", 
     "likes" : 15
 }
+
+###
+DELETE http://localhost:3001/api/blogs/62eeb6049b8c9fa44e5778b2

@@ -91,6 +91,19 @@ describe('blogs api tests', () => {
     await api.post('/api/blogs').send(blogWOUrl).expect(400)
   })
 
+  test('delete a post', async () => {
+    const { body : notesBefore } = await api.get('/api/blogs')
+    const blogToDelete = notesBefore[0]
+
+    await api.delete(`/api/blogs/${ blogToDelete.id }`).expect(204)
+
+    const { body: notesAfter } = await api.get('/api/blogs')
+
+    expect(notesAfter).toHaveLength(notesBefore.length -1)
+    expect(notesAfter.map(blog => blog.title)).not.toContain(blogToDelete.title)
+
+  })
+
   afterEach(async () => {
     await mongoose.connection.close()
   })
