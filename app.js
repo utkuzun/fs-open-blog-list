@@ -1,11 +1,11 @@
 const cors = require('cors')
 const express = require('express')
-
-const blogsRouter = require('./routers/blogs')
+const app = express()
+require('express-async-errors')
 
 const { morganIns, notFound, errorHandler } = require('./utils/middleware')
 
-const app = express()
+const blogsRouter = require('./routers/blogs')
 
 app.use(cors())
 app.use(express.json())
