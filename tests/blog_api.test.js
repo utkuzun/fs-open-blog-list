@@ -92,16 +92,29 @@ describe('blogs api tests', () => {
   })
 
   test('delete a post', async () => {
-    const { body : notesBefore } = await api.get('/api/blogs')
-    const blogToDelete = notesBefore[0]
+    const { body : blogsBefore } = await api.get('/api/blogs')
+    const blogToDelete = blogsBefore[0]
 
     await api.delete(`/api/blogs/${ blogToDelete.id }`).expect(204)
 
-    const { body: notesAfter } = await api.get('/api/blogs')
+    const { body: blogsAfter } = await api.get('/api/blogs')
 
-    expect(notesAfter).toHaveLength(notesBefore.length -1)
-    expect(notesAfter.map(blog => blog.title)).not.toContain(blogToDelete.title)
+    expect(blogsAfter).toHaveLength(blogsBefore.length -1)
+    expect(blogsAfter.map(blog => blog.title)).not.toContain(blogToDelete.title)
 
+  })
+
+  test('update a posts likes', async () => {
+    const { body : blogsBefore } = await api.get('/api/blogs/')
+
+    const blogToUpdate = blogsBefore[0]
+
+    const { body : { blog } } = await api
+      .patch(`/api/blogs/${blogToUpdate.id}`)
+      .send({ ...blogToUpdate, likes : 41 })
+      .expect(200)
+
+    expect(blog.likes).toBe(41)
   })
 
   afterEach(async () => {

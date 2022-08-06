@@ -16,4 +16,20 @@ const remove = async (req, res) => {
   res.status(204).send()
 }
 
-module.exports = { getAll, create, remove }
+const update = async (req, res) => {
+  const { id } = req.params
+  const newBlog = req.body
+
+  const blog = await Blog.findByIdAndUpdate(
+    { _id: id },
+    { ...newBlog },
+    {
+      new: true,
+      runValidators: true,
+    })
+
+  console.log(blog)
+  res.json({ blog })
+}
+
+module.exports = { getAll, create, remove, update }
