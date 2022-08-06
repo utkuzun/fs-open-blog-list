@@ -1,4 +1,4 @@
-GET http://localhost:3001/deneme/blogs
+GET http://localhost:3001/api/blogs
 
 ###
 POST http://localhost:3001/api/blogs/

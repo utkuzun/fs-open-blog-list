@@ -54,8 +54,7 @@ const _ = require('lodash')
 
 
 const dummy = (blogs) => {
-  console.log(blogs)
-  return 1
+  return blogs ? 1 : 0
 }
 
 
