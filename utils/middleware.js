@@ -22,6 +22,7 @@ const errorHandler = (err, req, res, next) => {
   }
 
   if (err.name === 'ValidationError') {
+    customError.message = Object.keys(err.errors).map(attr => `${attr} must be provided`).join(',')
     customError.statusCode = 400
   }
   res.status(customError.statusCode).json({ error: customError.message })
