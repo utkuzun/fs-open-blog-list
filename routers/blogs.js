@@ -5,7 +5,7 @@ const { getAll, create, remove, update } = require('../controllers/blogs')
 const router = express.Router()
 
 router.route('/').get(getAll).post(authentication, create)
-router.route('/:id').delete(remove).patch(update)
+router.route('/:id').delete(authentication, remove).patch(update)
 
 
 module.exports = router

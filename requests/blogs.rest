@@ -3,17 +3,18 @@ GET http://localhost:3001/api/blogs
 ###
 POST http://localhost:3001/api/blogs/
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmYwMzJlMzIyN2VhMzM4OTQwY2I4N2QiLCJ1c2VybmFtZSI6InNlaGVyIiwiaWF0IjoxNjU5OTA4ODUxLCJleHAiOjE2NTk5OTUyNTF9.2SqmXCV2G-n63bHGs0kYNCrHVl3iawFSmM9P-hQgPt0
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmYwM2M5YTVkMDA3MjVjZGQxNGFlODgiLCJ1c2VybmFtZSI6Im1haG11dDUiLCJpYXQiOjE2NTk5MTEzMzUsImV4cCI6MTY1OTk5NzczNX0.2JVpQ0wDMc-XQX8j8iJwJD9KE2_PYvR5iMrxH23CIz0
 
 {
-    "title" : "ask", 
+    "title" : "mamhut5-41", 
     "author" : "utku",
     "url" : "utku.com", 
     "likes" : 15
 }
 
 ###
-DELETE http://localhost:3001/api/blogs/62eeb6049b8c9fa44e5778b2
+DELETE http://localhost:3001/api/blogs/62f03d2adf2688d7d448f515
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmYwMzc2YjZjZDY0MTRhM2NhOWNjZTUiLCJ1c2VybmFtZSI6Imt0dWJhbiIsImlhdCI6MTY1OTkxMDAwNywiZXhwIjoxNjU5OTk2NDA3fQ.trMCjSjgUOoK2K26_jrqf91Ljj3soHvqV9sFRXQ1TOo
 
 ###
 PATCH http://localhost:3001/api/blogs/62eeb84a685bfbcddd2f3fc0

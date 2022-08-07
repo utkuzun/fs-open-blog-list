@@ -35,7 +35,6 @@ const notFound = (req, res) => {
 }
 
 const errorHandler = (err, req, res, next) => {
-  console.log(err)
   let customError = {
     message: err.message || 'internal server error',
     statusCode: err.statusCode || 500,
