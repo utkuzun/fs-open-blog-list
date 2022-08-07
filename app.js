@@ -7,12 +7,14 @@ const { morganIns, notFound, errorHandler } = require('./utils/middleware')
 
 const blogsRouter = require('./routers/blogs')
 const usersRouter = require('./routers/users')
+const authRouter = require('./routers/auth')
 
 app.use(cors())
 app.use(express.json())
 app.use(morganIns)
 
 
+app.use('/auth', authRouter)
 app.use('/api/blogs', blogsRouter)
 app.use('/api/users', usersRouter)
 

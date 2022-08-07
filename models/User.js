@@ -33,13 +33,14 @@ userSchema.methods.createJWT = function() {
     { userId : this._id, username : this.username },
     process.env.JWT_SECRET,
     {
-      expiresIN : process.env.JWT_LIFETIME,
+      expiresIn : process.env.JWT_LIFETIME,
     }
   )
 }
 
 userSchema.methods.comparePassword = async function(passTry) {
-  return await bcrypt.compare(this.password, passTry)
+  const check =  bcrypt.compare(passTry, this.password)
+  return check
 }
 
 userSchema.set('toJSON', {
