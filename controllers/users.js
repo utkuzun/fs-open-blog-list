@@ -2,7 +2,7 @@ const User = require('../models/User')
 const { CustomApiError } = require('../errors/CustomApiEror')
 
 const getAll = async (req, res) => {
-  const users = await User.find({})
+  const users = await User.find({}).populate('blogs', { user : 0 })
   res.json(users)
 }
 

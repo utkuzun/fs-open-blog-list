@@ -5,10 +5,11 @@ POST http://localhost:3001/api/blogs/
 Content-Type: application/json
 
 {
-    "title" : "akmet", 
-    "author" : "utku",
-    "url" : "tewasdfga", 
-    "likes" : 15
+    "title" : "kailşm", 
+    "author" : "udfasdftku",
+    "url" : "asdfasfsf", 
+    "likes" : 15,
+    "user" : "62f01e610aba298482ba3374"
 }
 
 ###

@@ -1,12 +1,21 @@
 const Blog = require('../models/Blog')
+const User = require('../models/User')
 
 const getAll = async (req, res) => {
-  const blogs = await Blog.find({})
+  const blogs = await Blog.find({}).populate('user', { blogs : 0 })
   res.json(blogs)
 }
 
 const create = async (req, res) => {
+
+  const { user : userId } = req.body
+
   const blog = await Blog.create(req.body)
+
+  const user = await User.findOne({ _id: userId })
+  user.blogs = [...user.blogs, blog]
+  await user.save()
+
   res.status(201).json({ blog })
 }
 
