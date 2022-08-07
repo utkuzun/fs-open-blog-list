@@ -8,9 +8,9 @@ const getAll = async (req, res) => {
 
 const create = async (req, res) => {
 
-  const { user : userId } = req.body
+  const { userId } = req.user
 
-  const blog = await Blog.create(req.body)
+  const blog = await Blog.create({ ...req.body, user : userId })
 
   const user = await User.findOne({ _id: userId })
   user.blogs = [...user.blogs, blog]

@@ -3,13 +3,13 @@ GET http://localhost:3001/api/blogs
 ###
 POST http://localhost:3001/api/blogs/
 Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmYwMzJlMzIyN2VhMzM4OTQwY2I4N2QiLCJ1c2VybmFtZSI6InNlaGVyIiwiaWF0IjoxNjU5OTA4ODUxLCJleHAiOjE2NTk5OTUyNTF9.2SqmXCV2G-n63bHGs0kYNCrHVl3iawFSmM9P-hQgPt0
 
 {
-    "title" : "kailşm", 
-    "author" : "udfasdftku",
-    "url" : "asdfasfsf", 
-    "likes" : 15,
-    "user" : "62f01e610aba298482ba3374"
+    "title" : "ask", 
+    "author" : "utku",
+    "url" : "utku.com", 
+    "likes" : 15
 }
 
 ###
