@@ -1,21 +1,20 @@
 const Blog = require('../models/Blog')
 const User = require('../models/User')
-const CustomApiError = require('../errors/CustomApiEror')
+const { CustomApiError } = require('../errors/CustomApiEror')
 
 const getAll = async (req, res) => {
-  const blogs = await Blog.find({}).populate('user', { blogs : 0 })
+  const blogs = await Blog.find({}).populate('user', { blogs: 0 })
   res.json(blogs)
 }
 
 const create = async (req, res) => {
-
   const { userId } = req.user
 
-  const blog = await Blog.create({ ...req.body, user : userId })
+  const blog = await Blog.create({ ...req.body, user: userId })
 
   const user = await User.findOne({ _id: userId })
   user.blogs = [...user.blogs, blog]
-  await user.update({ blogs : user.blogs })
+  await user.updateOne({ blogs: user.blogs })
 
   res.status(201).json({ blog })
 }
@@ -23,10 +22,21 @@ const create = async (req, res) => {
 const remove = async (req, res) => {
   const { id } = req.params
   const { userId } = req.user
-  const blog = await Blog.findByIdAndRemove({ _id : id, user : userId })
-  if(!blog) {
+  const blog = await Blog.findOne({ _id: id })
+
+  if (!blog || !(blog.user.toString() === userId.toString())) {
     throw new CustomApiError('Blog is not found', 404)
   }
+
+  await blog.delete()
+
+  const user = await User.findOne({ _id: userId })
+  const blogs = user.blogs.filter(
+    (item) => item.toString() !== blog.id.toString()
+  )
+
+  await user.updateOne({ blogs })
+
   res.status(204).send()
 }
 
@@ -40,7 +50,8 @@ const update = async (req, res) => {
     {
       new: true,
       runValidators: true,
-    })
+    }
+  )
 
   console.log(blog)
   res.json({ blog })

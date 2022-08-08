@@ -17,29 +17,31 @@ const userSchema = new mongoose.Schema({
     required: true,
     minlength: 6,
   },
-  blogs : [{
-    type : mongoose.Schema.Types.ObjectId,
-    ref: 'Blog'
-  }]
+  blogs: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Blog',
+    },
+  ],
 })
 
-userSchema.pre('save', async function() {
+userSchema.pre('save', async function () {
   const salt = await bcrypt.genSalt(10)
   this.password = await bcrypt.hash(this.password, salt)
 })
 
-userSchema.methods.createJWT = function() {
+userSchema.methods.createJWT = function () {
   return jwt.sign(
-    { userId : this._id, username : this.username },
+    { userId: this._id, username: this.username },
     process.env.JWT_SECRET,
     {
-      expiresIn : process.env.JWT_LIFETIME,
+      expiresIn: process.env.JWT_LIFETIME,
     }
   )
 }
 
-userSchema.methods.comparePassword = async function(passTry) {
-  const check =  bcrypt.compare(passTry, this.password)
+userSchema.methods.comparePassword = async function (passTry) {
+  const check = await bcrypt.compare(passTry, this.password)
   return check
 }
 
