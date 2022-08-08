@@ -9,12 +9,11 @@ const morganIns = morgan(
   ':method :url :status :res[content-length] - :response-time ms :body'
 )
 
-
 const authentication = (req, res, next) => {
   const authHeader = req.headers.authorization
 
-  if(!authHeader || !authHeader.toLowerCase().startsWith('bearer')) {
-    throw new CustomApiError('no token given', 403)
+  if (!authHeader || !authHeader.toLowerCase().startsWith('bearer')) {
+    throw new CustomApiError('no token given', 401)
   }
 
   const token = authHeader.split(' ')[1]
@@ -29,9 +28,8 @@ const authentication = (req, res, next) => {
   }
 }
 
-
 const notFound = (req, res) => {
-  res.status(404).json({ error : `Can not access the root ${req.url}` })
+  res.status(404).json({ error: `Can not access the root ${req.url}` })
 }
 
 const errorHandler = (err, req, res, next) => {
@@ -46,12 +44,13 @@ const errorHandler = (err, req, res, next) => {
   }
 
   if (err.name === 'ValidationError') {
-    customError.message = Object.keys(err.errors).map(attr => `${attr} must be provided`).join(',')
+    customError.message = Object.keys(err.errors)
+      .map((attr) => `${attr} must be provided`)
+      .join(',')
     customError.statusCode = 400
   }
+
   res.status(customError.statusCode).json({ error: customError.message })
 }
 
-
-
-module.exports = { morganIns , notFound, errorHandler, authentication }
+module.exports = { morganIns, notFound, errorHandler, authentication }

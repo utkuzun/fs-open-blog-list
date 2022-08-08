@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const initialBlogs = [
   {
     title: 'selam',
@@ -25,4 +27,17 @@ const initialBlogs = [
   },
 ]
 
-module.exports = { initialBlogs }
+const initialUsers = [
+  {
+    name: 'utku',
+    username: 'utku',
+    password: process.env.SAMPLE_PASSWORD,
+  },
+  {
+    name: 'mahmut',
+    username: 'mahmut',
+    password: process.env.SAMPLE_PASSWORD,
+  },
+]
+
+module.exports = { initialBlogs, initialUsers }

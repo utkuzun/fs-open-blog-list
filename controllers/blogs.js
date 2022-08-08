@@ -53,7 +53,6 @@ const update = async (req, res) => {
     }
   )
 
-  console.log(blog)
   res.json({ blog })
 }
 
