@@ -25,7 +25,7 @@ const remove = async (req, res) => {
   const blog = await Blog.findOne({ _id: id })
 
   if (!blog || !(blog.user.toString() === userId.toString())) {
-    throw new CustomApiError('Blog is not found', 404)
+    throw new CustomApiError('Not authorized to remove this blog', 404)
   }
 
   await blog.delete()

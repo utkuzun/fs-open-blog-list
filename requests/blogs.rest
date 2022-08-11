@@ -1,13 +1,13 @@
 GET http://localhost:3001/api/blogs
 
 ###
-POST http://localhost:3001/api/blogs/
+POST http://localhost:3003/api/blogs/
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmYwZmRkNTU1YWJkMzUwMmNlOWQ5ZDUiLCJ1c2VybmFtZSI6InV0a3UiLCJpYXQiOjE2NTk5NjI4MTUsImV4cCI6MTY2MDA0OTIxNX0.wzoA91_YaR3d-6EDLOYIsZHihi3SoO_HXdWGS47iUag
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmYzNWZhYWZhNzdiMDdkYzY0ODAwNTEiLCJ1c2VybmFtZSI6InNlaGVyYXkiLCJpYXQiOjE2NjAxMTY5ODMsImV4cCI6MTY2MDIwMzM4M30.oMJtAfijiLeVtsGIG7dKcXk92xLnYJAw37ALfePHVP4
 
 {
-    "title" : "mamhut chek del", 
-    "author" : "mahmut",
+    "title" : "seheray chek del", 
+    "author" : "seheray",
     "url" : "utku.com", 
     "likes" : 15
 }
