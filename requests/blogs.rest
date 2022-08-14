@@ -3,7 +3,7 @@ GET http://localhost:3003/api/blogs
 ###
 POST http://localhost:3003/api/blogs/
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmYzNWZhYWZhNzdiMDdkYzY0ODAwNTEiLCJ1c2VybmFtZSI6InNlaGVyYXkiLCJpYXQiOjE2NjAxMTY5ODMsImV4cCI6MTY2MDIwMzM4M30.oMJtAfijiLeVtsGIG7dKcXk92xLnYJAw37ALfePHVP4
+Authorization: bearer 
 
 {
     "title" : "seheray chek del", 
@@ -14,7 +14,7 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmYzN
 
 ###
 DELETE http://localhost:3001/api/blogs/62f1069c6e5bee0bd9eb652e
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmYwZmRkNTU1YWJkMzUwMmNlOWQ5ZDUiLCJ1c2VybmFtZSI6InV0a3UiLCJpYXQiOjE2NTk5NjI4MTUsImV4cCI6MTY2MDA0OTIxNX0.wzoA91_YaR3d-6EDLOYIsZHihi3SoO_HXdWGS47iUag
+Authorization: bearer 
 
 ###
 PATCH http://localhost:3001/api/blogs/62eeb84a685bfbcddd2f3fc0
