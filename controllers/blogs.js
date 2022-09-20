@@ -56,4 +56,23 @@ const update = async (req, res) => {
   res.json({ blog })
 }
 
-module.exports = { getAll, create, remove, update }
+const comment = async (req, res) => {
+  const { id } = req.params
+  const comment = req.body
+
+  const blog = await Blog.findOne({ _id: id })
+  const newComments = [...blog.comments, comment.comment]
+
+  const blogUpdated = await Blog.findByIdAndUpdate(
+    { _id: id },
+    { comments: newComments },
+    {
+      new: true,
+      runValidators: true,
+    }
+  )
+
+  res.json({ blog: blogUpdated })
+}
+
+module.exports = { getAll, create, remove, update, comment }

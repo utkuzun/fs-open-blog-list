@@ -39,6 +39,7 @@ const errorHandler = (err, req, res, next) => {
   }
 
   if (err.name === 'CastError') {
+    console.log(err)
     customError.message = 'id is not in correct type'
     customError.statusCode = 400
   }

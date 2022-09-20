@@ -24,3 +24,11 @@ Content-Type: application/json
     "likes" : 28,
     "kamil" : 42
 }
+
+###
+POST http://localhost:3003/api/blogs/62f36020fa77b07dc6480054/comments
+Content-Type: application/json
+
+{
+    "comment" : "very good blog"
+}
